@@ -30,7 +30,7 @@ function SidebarChat({ id, name, addNewChat }) {
             }
           };
           getMessagesDocs()
-    },[])
+    },[id])
     useEffect(() => {
         setSeed(Math.floor(Math.random() * 5000));
     }, []);
