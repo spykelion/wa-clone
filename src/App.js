@@ -16,6 +16,7 @@ function App() {
         <Sidebar />
       <Routes>
             <Route path="/rooms/:roomId" element={<Chat />} />
+            <Route path="/" element={<Chat />} />
             <Route path="*" element={<>NOt FOund</>} />
       </Routes>
       </div>
