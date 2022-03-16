@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import "./App.css";
 import Chat from "./Chat";
 import Login from "./Login";
@@ -9,20 +9,25 @@ import { useStateValue } from './StateProvider';
 function App() {
   const [{ user }, ] = useStateValue();
   console.log(user)
-  return user && (
-   <BrowserRouter>
-     <div className="app">
-      <div className="app__body">
-        <Sidebar />
-      <Routes>
-            <Route path="/rooms/:roomId" element={<Chat />} />
-            <Route path="/" element={<Chat />} />
-            <Route path="*" element={<>NOt FOund</>} />
-      </Routes>
-      </div>
+  return (
+    // BEM naming convention
+    <div className="app">
+      {!user ? (
+        <Login />
+      ) : (
+        <div className="app__body">
+          <Router>
+            <Sidebar />
+            <Routes>
+              <Route path="/rooms/:roomId" element={<Chat />} />
+              <Route path="/" element={<Chat />} />
+            </Routes>
+          </Router>
+        </div>
+      )}
     </div>
-   </BrowserRouter>
-  ) || (<Login />)
+  );
 }
+
 
 export default App;

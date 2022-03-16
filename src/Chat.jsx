@@ -8,7 +8,7 @@ import { doc, getDoc, collection, orderBy, query,onSnapshot, addDoc, serverTimes
 
 import { useStateValue } from "./StateProvider";
 import db from "./firebase";
-import "./chat.css";
+import "./Chat.css";
 
 function Chat() {
   const [{ user }] = useStateValue();
@@ -44,14 +44,14 @@ function Chat() {
 
     const getMessagesDocs = async () => {
       try {
+        // get a message query
         const mq = query(collection(db, "rooms", roomId, "messages"), orderBy("timestamp", "asc"))
         onSnapshot(mq, (querySnapshot) => {
-
-            console.log(querySnapshot.docs.map(doc =>
+            /* console.log(querySnapshot.docs.map(doc =>
               ({
                   id: doc.id,
                   data: doc.data(),
-              })))
+              }))) */
               setMessages(querySnapshot.docs.map(doc => doc.data()))
           });
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, IconButton } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
+import { Avatar } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { collection, addDoc, query, orderBy, onSnapshot } from "firebase/firestore";
 
@@ -15,7 +14,7 @@ function SidebarChat({ id, name, addNewChat }) {
     useEffect(()=>{
         const getMessagesDocs = async () => {
             try {
-              const mq = query(collection(db, "rooms", id, "messages"))
+              const mq = query(collection(db, "rooms", id, "messages"), orderBy("timestamp", "desc"))
               onSnapshot(mq, (querySnapshot) => {
                     setMessages(querySnapshot.docs.map(doc => doc.data()))
                     console.log("FROM SIDEBAR - chat => /-trim/",querySnapshot.docs.map(doc =>
@@ -55,9 +54,7 @@ function SidebarChat({ id, name, addNewChat }) {
         </Link>
     ) : (
         <div onClick={createChat} className="sidebarChat">
-             <IconButton>
-            <AddIcon />
-          </IconButton>
+            <h2>Add New Chat</h2>
         </div>
     )
 }

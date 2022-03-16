@@ -14,7 +14,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import db from "./firebase";
 
 import SidebarChat from './SidebarChat';
-import "./sidebar.css";
+import "./Sidebar.css";
 
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
@@ -36,9 +36,7 @@ function Sidebar() {
     }
     
     console.log(rooms)
-    // unsub()
-//    return ()=>unsub()
-  }, [])
+  }, [rooms])
 
   return (
     <div className="sidebar">

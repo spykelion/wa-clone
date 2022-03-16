@@ -1,17 +1,17 @@
 .sidebarChat {
     display: flex;
     padding: 20px;
-    /* cursor: pointer; */
+    cursor: pointer;
     border-bottom: 1px solid #f6f6f6;
+}
 
-}
-.sidebarChat  > .MuiSvgIcon-root {
-    padding: 10px;
-    color: #962121 !important;
-}
 a {
     text-decoration: none !important;
     color: black;
+}
+
+.sidebarChat:hover {
+    background-color: #ebebeb;
 }
 
 .sidebarChat__info {
